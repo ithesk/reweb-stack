@@ -12,8 +12,8 @@ WORKDIR /srv/app
 # Copy only package.json (ignore yarn.lock for cross-platform builds)
 COPY package.json ./
 
-# Install dependencies with npm
-RUN npm install --legacy-peer-deps
+# Install dependencies
+RUN npm install
 
 # Copy project files
 COPY . .
