@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Main landing page content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.hero"
+    },
+    "about": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.about"
+    },
+    "quote": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.quote"
+    }
+  }
+}

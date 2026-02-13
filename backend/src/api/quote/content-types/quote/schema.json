@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "quotes",
+  "info": {
+    "singularName": "quote",
+    "pluralName": "quotes",
+    "displayName": "Quote",
+    "description": "Bible verse or inspirational quote"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "reference": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

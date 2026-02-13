@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_abouts",
+  "info": {
+    "displayName": "About",
+    "icon": "information",
+    "description": "About section with description and image"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "QUIÉNES SOMOS"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Conoce más"
+    },
+    "ctaHref": {
+      "type": "string",
+      "default": "/nosotros"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
