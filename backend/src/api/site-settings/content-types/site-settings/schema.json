@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-settings",
+    "pluralName": "site-settings",
+    "displayName": "Site Settings",
+    "description": "Global site configuration: name, logos, tagline, copyright"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "required": true,
+      "default": "Iglesia Revoluciona"
+    },
+    "tagline": {
+      "type": "string",
+      "default": "Transformando vidas, construyendo comunidad, impactando ciudades."
+    },
+    "copyright": {
+      "type": "string",
+      "default": "© 2026 Iglesia Revoluciona. Todos los derechos reservados."
+    },
+    "searchPlaceholder": {
+      "type": "string",
+      "default": "Buscar"
+    },
+    "privacyLabel": {
+      "type": "string",
+      "default": "Privacidad"
+    },
+    "privacyHref": {
+      "type": "string",
+      "default": "#"
+    },
+    "termsLabel": {
+      "type": "string",
+      "default": "Terminos"
+    },
+    "termsHref": {
+      "type": "string",
+      "default": "#"
+    }
+  }
+}

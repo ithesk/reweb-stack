@@ -26,6 +26,21 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.quote"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-section"
+    },
+    "servicesHeader": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
+    },
+    "eventsHeader": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     }
   }
 }
