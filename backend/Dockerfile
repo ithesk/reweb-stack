@@ -1,23 +1,26 @@
-FROM node:18-alpine
+FROM node:18-bookworm-slim
 
-# Install system dependencies for native modules
-RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev
+# Install system dependencies for native modules (sharp, vips)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libvips-dev \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /srv/app
 
-# Copy package files
-COPY package.json yarn.lock ./
+# Copy only package.json (ignore yarn.lock for cross-platform builds)
+COPY package.json ./
 
-# Install dependencies (no frozen-lockfile for cross-platform compatibility)
-RUN yarn install --network-timeout 600000
+# Install dependencies with npm
+RUN npm install --legacy-peer-deps
 
 # Copy project files
 COPY . .
 
 # Build admin panel
-RUN NODE_ENV=production yarn build
+RUN NODE_ENV=production npm run build
 
-# Expose Strapi port
 EXPOSE 1337
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]
