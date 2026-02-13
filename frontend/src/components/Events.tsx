@@ -1,4 +1,7 @@
-const events = [
+import type { ChurchEvent } from "@/lib/types";
+import { getStrapiImageUrl } from "@/lib/api";
+
+const fallbackEvents = [
   {
     date: "MAR 15 — DOMINGO",
     title: "Servicio Especial de Adoracion",
@@ -25,7 +28,20 @@ const events = [
   },
 ];
 
-export function Events() {
+interface EventsProps {
+  events?: ChurchEvent[];
+}
+
+export function Events({ events }: EventsProps) {
+  const items = events && events.length > 0
+    ? events.map((e) => ({
+        date: e.displayDate,
+        title: e.title,
+        description: e.description,
+        image: e.image ? getStrapiImageUrl(e.image) : fallbackEvents[0].image,
+      }))
+    : fallbackEvents;
+
   return (
     <section className="flex flex-col gap-10 md:gap-16 w-full px-6 md:px-10 lg:px-[80px] py-16 md:py-[100px] bg-[var(--bg-surface)]">
       {/* Header */}
@@ -48,7 +64,7 @@ export function Events() {
 
       {/* Event Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-        {events.map((event) => (
+        {items.map((event) => (
           <div
             key={event.title}
             className="flex flex-col rounded-[16px] bg-[var(--bg-primary)] overflow-hidden"

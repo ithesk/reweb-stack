@@ -1,21 +1,43 @@
 import Image from "next/image";
+import type { FooterColumn } from "@/lib/types";
 
-const footerColumns = [
+const fallbackColumns = [
   {
     title: "NOSOTROS",
-    links: ["Nuestra Historia", "Vision y Mision", "Pastores", "Ubicaciones"],
+    links: [
+      { label: "Nuestra Historia", href: "#" },
+      { label: "Vision y Mision", href: "#" },
+      { label: "Pastores", href: "#" },
+      { label: "Ubicaciones", href: "#" },
+    ],
   },
   {
     title: "SERVICIOS",
-    links: ["Servicios Dominicales", "Grupos de Vida", "Jovenes", "Donar"],
+    links: [
+      { label: "Servicios Dominicales", href: "#" },
+      { label: "Grupos de Vida", href: "#" },
+      { label: "Jovenes", href: "#" },
+      { label: "Donar", href: "#" },
+    ],
   },
   {
     title: "REDES",
-    links: ["Instagram", "YouTube", "Facebook", "Contacto"],
+    links: [
+      { label: "Instagram", href: "#" },
+      { label: "YouTube", href: "#" },
+      { label: "Facebook", href: "#" },
+      { label: "Contacto", href: "#" },
+    ],
   },
 ];
 
-export function Footer() {
+interface FooterProps {
+  columns?: FooterColumn[];
+}
+
+export function Footer({ columns }: FooterProps) {
+  const cols = columns && columns.length > 0 ? columns : fallbackColumns;
+
   return (
     <footer className="flex flex-col gap-10 md:gap-16 w-full px-6 md:px-10 lg:px-[80px] pt-16 md:pt-[80px] pb-8 md:pb-[40px] bg-[var(--bg-dark)]">
       {/* Top */}
@@ -36,18 +58,18 @@ export function Footer() {
 
         {/* Columns */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-[80px]">
-          {footerColumns.map((col) => (
+          {cols.map((col) => (
             <div key={col.title} className="flex flex-col gap-4">
               <h4 className="font-display text-[12px] font-bold text-[var(--text-inverted)] tracking-[2px]">
                 {col.title}
               </h4>
               {col.links.map((link) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={link.label}
+                  href={link.href}
                   className="font-body text-[14px] text-[var(--text-muted)] hover:text-white transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>

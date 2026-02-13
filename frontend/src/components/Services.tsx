@@ -1,4 +1,7 @@
-const services = [
+import type { Service } from "@/lib/types";
+import { getStrapiImageUrl } from "@/lib/api";
+
+const fallbackServices = [
   {
     title: "Servicios Dominicales",
     description:
@@ -22,7 +25,19 @@ const services = [
   },
 ];
 
-export function Services() {
+interface ServicesProps {
+  services?: Service[];
+}
+
+export function Services({ services }: ServicesProps) {
+  const items = services && services.length > 0
+    ? services.map((s) => ({
+        title: s.title,
+        description: s.description,
+        image: s.image ? getStrapiImageUrl(s.image) : fallbackServices[0].image,
+      }))
+    : fallbackServices;
+
   return (
     <section
       id="servicios"
@@ -44,7 +59,7 @@ export function Services() {
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-        {services.map((service) => (
+        {items.map((service) => (
           <div
             key={service.title}
             className="flex flex-col rounded-[16px] bg-[var(--bg-elevated)] overflow-hidden"
