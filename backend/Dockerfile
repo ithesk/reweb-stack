@@ -8,17 +8,16 @@ WORKDIR /srv/app
 # Copy package files
 COPY package.json yarn.lock ./
 
-# Install dependencies
-RUN yarn install --frozen-lockfile --production=false
+# Install dependencies (no frozen-lockfile for cross-platform compatibility)
+RUN yarn install --network-timeout 600000
 
 # Copy project files
 COPY . .
 
 # Build admin panel
-RUN yarn build
+RUN NODE_ENV=production yarn build
 
 # Expose Strapi port
 EXPOSE 1337
 
-# Start Strapi
 CMD ["yarn", "start"]
