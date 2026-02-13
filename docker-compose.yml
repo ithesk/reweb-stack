@@ -1,0 +1,59 @@
+services:
+  strapi:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: reweb-strapi
+    restart: unless-stopped
+    ports:
+      - "1337:1337"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 1337
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${DATABASE_NAME:-strapi}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-strapi}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+      DATABASE_SSL: "false"
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      JWT_SECRET: ${JWT_SECRET}
+      STRAPI_ADMIN_CLIENT_URL: ${STRAPI_ADMIN_CLIENT_URL:-http://localhost:1337}
+      NODE_ENV: ${NODE_ENV:-production}
+    volumes:
+      - strapi-uploads:/srv/app/public/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - reweb-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: reweb-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-strapi}
+      POSTGRES_USER: ${DATABASE_USERNAME:-strapi}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME:-strapi} -d ${DATABASE_NAME:-strapi}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - reweb-network
+
+volumes:
+  pgdata:
+  strapi-uploads:
+
+networks:
+  reweb-network:
+    driver: bridge

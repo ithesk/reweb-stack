@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Strapi
+backend/.tmp/
+backend/.cache/
+backend/dist/
+backend/build/
+backend/.strapi/
+backend/.strapi-cloud.json
+backend/.strapi-updater.json
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
+
+# Docker
+pgdata/
+
+# Logs
+*.log
+
+# Agents
+.agents/

@@ -1,0 +1,16 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev
+
+WORKDIR /srv/app
+
+COPY package.json yarn.lock ./
+
+RUN yarn install --frozen-lockfile
+
+COPY . .
+
+EXPOSE 1337
+
+# develop = hot reload
+CMD ["yarn", "develop"]
