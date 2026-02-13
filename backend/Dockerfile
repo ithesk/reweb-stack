@@ -18,8 +18,8 @@ RUN npm install --legacy-peer-deps
 # Copy project files
 COPY . .
 
-# Build admin panel
-RUN NODE_ENV=production npm run build
+# Build admin panel (needs extra memory for webpack)
+RUN NODE_OPTIONS="--max-old-space-size=2048" NODE_ENV=production npm run build
 
 EXPOSE 1337
 
