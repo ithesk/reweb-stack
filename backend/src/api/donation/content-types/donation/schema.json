@@ -27,7 +27,19 @@
       "type": "string"
     },
     "destination": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": ["Diezmos", "Ofrendas"],
+      "default": "Ofrendas"
+    },
+    "frequency": {
+      "type": "enumeration",
+      "enum": ["normal", "semanal", "quincenal", "mensual"],
+      "default": "normal"
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["paypal", "transferencia"],
+      "default": "transferencia"
     },
     "status": {
       "type": "enumeration",
