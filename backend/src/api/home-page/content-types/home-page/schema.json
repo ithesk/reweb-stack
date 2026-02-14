@@ -58,6 +58,11 @@
     },
     "connectDescription": {
       "type": "text"
+    },
+    "heroSlides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.hero-slide"
     }
   }
 }
