@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_quick_actions",
+  "info": {
+    "displayName": "Quick Action",
+    "icon": "apps",
+    "description": "Mobile quick action icon button"
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": ["streaming", "ubicacion", "donar", "grupos", "eventos", "sermones", "contacto", "oracion"],
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false
+    },
+    "opensMap": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

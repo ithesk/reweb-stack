@@ -41,6 +41,11 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.section-header"
+    },
+    "quickActions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.quick-action"
     }
   }
 }
