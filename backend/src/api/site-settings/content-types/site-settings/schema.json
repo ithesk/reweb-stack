@@ -44,6 +44,10 @@
     "termsHref": {
       "type": "string",
       "default": "#"
+    },
+    "streamingUrl": {
+      "type": "string",
+      "default": "https://www.youtube.com/watch?v=dwhe1Rh-_K8"
     }
   }
 }
