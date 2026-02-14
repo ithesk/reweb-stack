@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "donations",
+  "info": {
+    "singularName": "donation",
+    "pluralName": "donations",
+    "displayName": "Donation",
+    "description": "Registro de donaciones recibidas"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pendiente", "completada", "cancelada"],
+      "default": "pendiente"
+    }
+  }
+}
