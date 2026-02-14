@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_connect_cards",
+  "info": {
+    "displayName": "Connect Card",
+    "icon": "picture",
+    "description": "Card for the Discover ways to connect section"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

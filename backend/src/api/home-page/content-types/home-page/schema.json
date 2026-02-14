@@ -46,6 +46,18 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.quick-action"
+    },
+    "connectCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.connect-card"
+    },
+    "connectTitle": {
+      "type": "string",
+      "default": "Descubre formas de conectarnos"
+    },
+    "connectDescription": {
+      "type": "text"
     }
   }
 }
